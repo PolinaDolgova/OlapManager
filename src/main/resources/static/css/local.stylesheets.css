@@ -1,0 +1,167 @@
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.sidenav {
+    min-width: 250px;
+    font-size: 14px;
+    line-height: 1;
+    float: left;
+    z-index: 1;
+    top: 70px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 15px 10px;
+    margin: 10px 10px;
+}
+
+.sidenav select {
+    width: 150px;
+    height: 30px;
+}
+
+.sidenav table {
+    table-layout: auto;
+}
+
+.sidenav tr, th {
+    width: 100px;
+}
+
+.sidenav button {
+    min-width: 75px;
+    margin: 10px 0;
+    height: 30px;
+}
+
+.sidenav textarea {
+    width: 100%;
+    margin: 10px 0;
+    min-height: 150px;
+    resize: vertical;
+}
+
+.sidenav input[type=text] {
+    margin: 2px 2px;
+    width: 150px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+}
+
+tr.sidenavTableRow {
+    padding: 3px;
+}
+
+td.sidenavTableRow {
+    padding: 2px;
+}
+
+.sidenavcomponents {
+    float: left;
+}
+
+.main {
+    width: 900px;
+    float: left;
+    padding: 20px 20px;
+}
+
+.main label {
+    width: 1000px;
+}
+
+.main table {
+    border: 5px;
+    border-collapse: collapse;
+}
+
+.main th {
+    background: #b0e0e6;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+.main canvas {
+    max-width: 900px !important;
+    min-height: 450px !important;
+}
+
+.info {
+    width: 800px;
+    text-align: right;
+    font-size: 20px;
+    float: right;
+    margin: 0px 20px;
+}
+
+.info h1{
+    font-size: 60px;
+    color: #1E6D74;
+}
+
+.info label{
+    width: 750px;
+}
+
+tr.mainTableRow {
+    padding: 3px;
+    border: 1px solid black;
+
+}
+
+td.mainTableRow {
+    padding: 3px;
+    border: 1px solid black;
+    font-size: 14px;
+}
+
+.container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.diagram{
+    width: 150px;
+    font-size: 14px;
+    line-height: 1;
+    z-index: 1;
+    top: 70px;
+    left: 10px;
+    overflow-x: hidden;
+    padding: 15px 10px;
+    margin: 150px 10px;
+}

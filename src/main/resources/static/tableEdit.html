@@ -1,0 +1,41 @@
+<h6>Dimensions:</h6>
+<table>
+    <tr ng-repeat="dimensionName in dimensions" class="sidenavTableRow">
+        <td class="sidenavTableRow">
+            <input
+                    type="checkbox"
+                    ng-model="selected"
+                    ng-checked="exists(dimensionName.name)"
+                    ng-click="toggleSelection(dimensionName.name, inputval)"
+                    ng-disabled="disable">
+        </td>
+        <td class="sidenavTableRow">
+            {{dimensionName.name}}
+        </td>
+        <td class="sidenavTableRow">
+            <select ng-model="inputval"
+                    ng-disabled="disable">
+                <option ng-repeat="hierarchy in dimensionName.hierarchies">
+                    {{hierarchy}}
+                </option>
+            </select>
+        </td>
+    </tr>
+</table>
+<h6>Measures:</h6>
+<table>
+    <tr ng-repeat="measureName in measures" class="sidenavTableRow">
+        <td class="sidenavTableRow">
+            <input
+                    type="checkbox"
+                    ng-model="selected"
+                    ng-checked="exists(measureName)"
+                    ng-click="toggleSelection(measureName, inputval)"
+                    ng-disabled="disable">
+        </td>
+        <td class="sidenavTableRow">
+            {{measureName}}
+        </td>
+    </tr>
+</table>
+<button ng-show="curcube.length" ng-click="getData()">{{tablebtn}}</button>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>OlapViewer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.17/angular-ui-router.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/local.stylesheets.css">
+</head>
+<body ng-controller="AppCtrl">
+<div>
+    <div class="container-fluid">
+        <div class="topnav">
+            <a ui-sref="Table Editor" ng-click="hideInfo()">Table Editor</a>
+            <a ui-sref="Query Editor" ng-click="hideInfo()">Query Editor</a>
+            <a ui-sref="Diagram Editor" ng-click="hideInfo()">Diagram Editor</a>
+        </div>
+        <div class="sidenav">
+            <h3>Toolbar</h3>
+            <div class="sidenavcomponents">
+                Select catalog:
+                <br>
+                <select ng-model="curcatalog">
+                    <option ng-repeat="catalog in cataloglist">
+                        {{catalog}}
+                    </option>
+                </select>
+                <button ng-click="setCatalog()">Update</button>
+                <br>
+                Select OLAP-cube:
+                <br>
+                <select ng-model="curcube">
+                    <option ng-repeat="cube in cubelist">
+                        {{cube}}
+                    </option>
+                </select>
+                <button ng-click="setCube()">Update</button>
+            </div>
+            <div ui-view></div>
+        </div>
+        <div class="main">
+            <div class="info" ng-show="infoshow">
+                <img src="cubelogo.png" width="220" height="220" align="bottom">
+                <h1>Olap Viewer</h1>
+                <label>Olap Viewer is a new web-application for working with OLAP-cubes.</label>
+
+                <label>It contains tools for translating raw information into a meaningful,
+                    convenient form for subsequent analysis. This application
+                    allows to create MDX-queries to current Olap-cube, get necessary data
+                    into table and work with it. User can also write direct queries to cubes.
+                    Another special tool for visualizing data is charts and
+                    diagrams. It is based on obtaining data and can change their appearance.
+                </label>
+            </div>
+            <label>{{query}}</label>
+            <div>
+                <table>
+                    <tr class="mainTableRow">
+                        <th ng-repeat="measure in selected"> {{measure}}</th>
+                    </tr>
+                    <tr class="mainTableRow" ng-repeat="row in rows">
+                        <td class="mainTableRow" ng-repeat="cell in row.cells">
+                            {{cell.value}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <canvas id="line" class="chart-line"
+                    chart-data="data" chart-labels="labels"
+                    chart-dataset-override="datasetOverride"
+                    ng-show="chart == 'line'">
+            </canvas>
+            <canvas id="pie" class="chart-pie"
+                    chart-data="data" chart-labels="labels"
+                    chart-dataset-override="datasetOverride" chart-options="options"
+                    ng-show="chart == 'pie'">
+            </canvas>
+            <canvas id="bar" class="chart-bar"
+                    chart-data="data" chart-labels="labels"
+                    chart-dataset-override="datasetOverride"
+                    ng-show="chart == 'bar'">
+            </canvas>
+            <canvas id="doughnut" class="chart-doughnut"
+                    chart-data="data" chart-labels="labels"
+                    chart-dataset-override="datasetOverride" chart-options="options"
+                    ng-show="chart == 'doughnut'">
+            </canvas>
+            <canvas id="horizontal-bar" class="chart-horizontal-bar"
+                    chart-data="data" chart-labels="labels"
+                    chart-dataset-override="datasetOverride"
+                    ng-show="chart == 'horizontal-bar'">
+            </canvas>
+        </div>
+        <div class="diagram">
+            <h5 ng-show="diagramedit">Diagram type:</h5>
+            <lable ng-repeat="charttype in types" ng-show="diagramedit">
+                <input
+                        type="radio"
+                        ng-model="$parent.chart"
+                        ng-click="setChartType(charttype)"
+                        ng-value="charttype">
+                {{charttype}}
+                <br>
+            </lable>
+        </div>
+    </div>
+</div>
+</body>
+</html>
